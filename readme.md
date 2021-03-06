@@ -7,7 +7,7 @@
 - 服务端排序
 - 固定表头、固定列
 
-![](preview.gif)
+![](https://github.com/qxtang/taro3-table/raw/master/preview.gif)
 
 
 # 注意
