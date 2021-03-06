@@ -9,21 +9,20 @@
 
 ![](preview.gif)
 
-# 使用前注意
-- 需开启 css module
-- 需支持 ts、less
 
-# 使用方法
-下载组件并引入
-```tsx
-import Table, {IColumns} from '../../components/Table';
+# 注意
+项目需支持 typescript、css module
+
+# 安装
+```
+yarn add taro3-table
 ```
 
 # 使用示例
 ```tsx
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
-import Table, {IColumns} from '../../components/Table';
+import Table, {IColumns} from 'taro3-table';
 
 interface AnyOptions {
     [prop: string]: any
@@ -178,7 +177,7 @@ export default (): JSX.Element => {
                 loading={loading}
                 style={{
                     margin: '0 auto',
-                    width: '95vw'
+                    width: '92vw'
                 }}
 
                 // 固定表头、横向滚动 示例
@@ -191,9 +190,7 @@ export default (): JSX.Element => {
     );
 }
 
-
 ```
-
 
 # 参数说明
 组件参数：
