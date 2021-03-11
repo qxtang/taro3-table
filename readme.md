@@ -363,31 +363,8 @@ export default () => {
 # 参数说明
 组件参数：
 ```ts
-export interface IColumns {
-    title: string | JSX.Element; // 标题
-    dataIndex: string; // 列数据在数据项中对应的路径
-    key?: string; // React 需要的 key，如果已经设置了唯一的 dataIndex，可以忽略这个属性
-    align?: 'left' | 'right' | 'center'; // 设置该列文本对齐方式
-    style?: CSSProperties; // 该列单元格内联样式
-    titleStyle?: CSSProperties; //  该列表头内联样式
-    className?: string; // 该列单元格 css 类名
-    titleClassName?: string; // 设置该列表头单元格 css 类名
-    render?: (text?: any, record?: AnyOpt, index?: number) => JSX.Element | string; // 渲染函数
-    width?: number; // 列宽，单位px，默认100
-    sort?: boolean; // 表头是否显示排序按钮
-    sortOrder?: SortOrder; // 排序的受控属性
-    sorter?: CompareFn | boolean; // 自定义排序函数，相当于 Array.sort 的 compareFunction，需要服务端排序可设为 true
-    sortLevel?: number; // 多列排序优先级
-    onSort?: (sortOrder: SortOrder) => void; // 点击排序按钮钩子，常用于服务端排序
-    fixed?: FixedType; // 固定列
-    expandable?: boolean; // 该列是否启用点击展开收起功能，默认 true
-}
-```
-
-列描述数据对象，是 columns 中的一项：
-```ts
 interface Props extends React.PropsWithChildren<any> {
-    columns: IColumns[]; // 表格列的配置描述
+    columns: IColumns[]; // 表格列的配置描述，详见下方
     dataSource: DataSource; // 数据源
     rowKey: string; // 表格行 key 的取值
     className?: string; // 最外层包裹节点 css 类名
@@ -406,5 +383,28 @@ interface Props extends React.PropsWithChildren<any> {
         x?: number | string | boolean,
         y?: number | string | boolean,
     }
+}
+```
+
+表格列的配置描述，是 columns 中的一项：
+```ts
+export interface IColumns {
+    title: string | JSX.Element; // 标题
+    dataIndex: string; // 列数据在数据项中对应的路径
+    key?: string; // React 需要的 key，如果已经设置了唯一的 dataIndex，可以忽略这个属性
+    align?: 'left' | 'right' | 'center'; // 设置该列文本对齐方式
+    style?: CSSProperties; // 该列单元格内联样式
+    titleStyle?: CSSProperties; //  该列表头内联样式
+    className?: string; // 该列单元格 css 类名
+    titleClassName?: string; // 设置该列表头单元格 css 类名
+    render?: (text?: any, record?: AnyOpt, index?: number) => JSX.Element | string; // 渲染函数
+    width?: number; // 列宽，单位px，默认100
+    sort?: boolean; // 表头是否显示排序按钮
+    sortOrder?: SortOrder; // 排序的受控属性
+    sorter?: CompareFn | boolean; // 自定义排序函数，相当于 Array.sort 的 compareFunction，需要服务端排序可设为 true
+    sortLevel?: number; // 多列排序优先级
+    onSort?: (sortOrder: SortOrder) => void; // 点击排序按钮钩子，常用于服务端排序
+    fixed?: FixedType; // 固定列
+    expandable?: boolean; // 该列是否启用点击展开收起功能，默认 true
 }
 ```
