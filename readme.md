@@ -11,7 +11,7 @@
 
 
 # 注意
-项目需支持 typescript、css module
+项目需支持 typescript
 
 # 安装
 ```

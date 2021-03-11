@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import {ScrollView, Text, View} from '@tarojs/components';
 
 // styles
-import styles from './style.module.scss';
+import './style.css';
 
 // constants
 const DEFAULT_COL_WIDTH = 100; // 默认列宽
@@ -235,7 +235,7 @@ const Table = (props: Props): JSX.Element => {
         return getSize(result);
     }, [columns]);
 
-    const Title = (props: { column: IColumns, index: number }): JSX.Element => {
+    const Title = (props: { key: any, column: IColumns, index: number }): JSX.Element => {
         const {
             column,
             index,
@@ -245,8 +245,8 @@ const Table = (props: Props): JSX.Element => {
             <View
                 onClick={handleClickTitle.bind(this, column, index)}
                 className={classnames({
-                    [styles.title]: true,
-                    [styles.fixed]: column.fixed,
+                    'title': true,
+                    'fixed': column.fixed,
                     [column.titleClassName as string]: true,
                     [titleClassName]: true,
                 })}
@@ -262,17 +262,17 @@ const Table = (props: Props): JSX.Element => {
                 <Text>{column.title}</Text>
                 {
                     column.sort && (
-                        <View className={styles.sortBtn}>
+                        <View className="sortBtn">
                             <View className={classnames({
-                                [styles.btn]: true,
-                                [styles.ascend]: true,
-                                [styles.active]: (column.sortOrder === 'ascend')
+                                'btn': true,
+                                'ascend': true,
+                                'active': (column.sortOrder === 'ascend')
                             })}
                             />
                             <View className={classnames({
-                                [styles.btn]: true,
-                                [styles.descend]: true,
-                                [styles.active]: (column.sortOrder === 'descend')
+                                'btn': true,
+                                'descend': true,
+                                'active': (column.sortOrder === 'descend')
                             })}
                             />
                         </View>
@@ -282,7 +282,7 @@ const Table = (props: Props): JSX.Element => {
         );
     };
 
-    const Row = (props: { dataSourceItem: AnyOpt, index: number }): JSX.Element => {
+    const Row = (props: { key: any, dataSourceItem: AnyOpt, index: number }): JSX.Element => {
         const {
             dataSourceItem,
             index
@@ -292,7 +292,7 @@ const Table = (props: Props): JSX.Element => {
             <View
                 key={dataSourceItem[rowKey]}
                 className={classnames({
-                    [styles.row]: true,
+                    'row': true,
                     [rowClassName]: true,
                 })}
                 style={rowStyle}
@@ -321,9 +321,9 @@ const Table = (props: Props): JSX.Element => {
                                 key={columnItem.key || columnItem.dataIndex}
                                 className={classnames({
                                     [colClassName]: true,
-                                    [styles.col]: true,
-                                    [styles.fixed]: columnItem.fixed,
-                                    [styles.expansion]: expansion,
+                                    'col': true,
+                                    'fixed': columnItem.fixed,
+                                    'expansion': expansion,
                                     [columnItem.className as string]: true
                                 })}
                                 style={{
@@ -343,7 +343,7 @@ const Table = (props: Props): JSX.Element => {
 
     const Loading = () => {
         return (
-            <View className={styles.loading}>
+            <View className="loading">
                 <Text>加载中</Text>
             </View>
         );
@@ -351,7 +351,7 @@ const Table = (props: Props): JSX.Element => {
 
     const Empty = () => {
         return (
-            <View className={styles.nothing}>
+            <View className="nothing">
                 <Text>暂无数据</Text>
             </View>
         );
@@ -359,12 +359,12 @@ const Table = (props: Props): JSX.Element => {
 
     return (
         <View
-            className={classnames([styles.taro3table, className])}
+            className={classnames(['taro3table', className])}
             style={style}
         >
             {loading && (<Loading/>)}
             <ScrollView
-                className={styles.table}
+                className="table"
                 scroll-x={(dataSource.length !== 0) && (scroll.x)}
                 scroll-y={scroll.y}
                 style={{
@@ -374,13 +374,13 @@ const Table = (props: Props): JSX.Element => {
             >
                 <View
                     className={classnames({
-                        [styles.head]: true,
-                        [styles.scroll]: scroll.y,
+                        'head': true,
+                        'scroll': scroll.y,
                     })}
                 >
                     {
                         (columns.length === 0) ? (
-                            <View className={styles.nothing}>
+                            <View className="nothing">
                                 <Text>暂无数据</Text>
                             </View>
                         ) : columns.map((item: IColumns, index: number): JSX.Element => {
@@ -394,7 +394,7 @@ const Table = (props: Props): JSX.Element => {
                         })
                     }
                 </View>
-                <View className={styles.body}>
+                <View className="body">
                     {
                         ((dataSource.length === 0) && (!loading)) ? (
                             <Empty/>

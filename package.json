@@ -4,15 +4,15 @@
   "author": "qxtang",
   "description": "",
   "main": "build/index.js",
-  "scripts": {
-    "build": "bash ./build.sh",
-    "push": "git add . && git commit -m modify && git push"
-  },
-  "dependencies": {
-    "classnames": "^2.2.6"
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:qxtang/taro3-table.git"
+  },
+  "scripts": {
+    "generate": "bash ./generate.sh",
+    "lessc": "lessc src/components/Table/style.less src/components/Table/style.css -x"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
   }
 }
