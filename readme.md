@@ -1,6 +1,23 @@
-# 简介
-基于 Taro3 的微信小程序端多功能表格组件
-主要功能：
+<div align="center">
+    <h1>taro3-table</h1>
+    <p>基于 Taro3、React 的微信小程序端多功能表格组件</p>
+    <p>
+        <a href="https://github.com/qxtang/taro3-table/stargazers" target="_black">
+          <img src="https://img.shields.io/github/stars/qxtang/taro3-table?color=%23ffca28&logo=github&style=flat-square" alt="stars" />
+        </a>
+        <a href="https://github.com/qxtang/taro3-table/network/members" target="_black">
+          <img src="https://img.shields.io/github/forks/qxtang/taro3-table?color=%23ffca28&logo=github&style=flat-square" alt="forks" />
+        </a>
+        <a href="https://www.npmjs.com/package/taro3-table" target="_black">
+          <img src="https://img.shields.io/npm/v/taro3-table?color=%23ffca28&logo=npm&style=flat-square" alt="version" />
+        </a>
+        <a href="https://www.npmjs.com/package/taro3-table" target="_black">
+          <img src="https://img.shields.io/npm/dm/taro3-table?color=%23ffca28&logo=npm&style=flat-square" alt="downloads" />
+        </a>
+    </p>
+</div>
+
+# 主要功能
 - 自定义样式
 - 单列多列排序
 - 自定义排序
@@ -9,13 +26,66 @@
 
 ![](https://github.com/qxtang/taro3-table/raw/master/preview.gif)
 
+# 注意
+只能在基于 Taro 和 React 的项目中使用。
+
 # 安装
-```
+```sh
+# npm 安装：
+npm install taro3-table
+
+# yarn 安装：
 yarn add taro3-table
 ```
 
-# 使用示例
+# 使用
+- [点击查看 jsx 中使用示例](https://github.com/qxtang/taro3-table#jsx)
+- [点击查看 tsx 中使用示例](https://github.com/qxtang/taro3-table#tsx)
+
+```jsx
+import React from 'react';
+import Table from 'taro3-table';
+
+export default () => {
+
+    const dataSource = [
+        {
+            username: '小红',
+            telephone: '123'
+        },
+        {
+            username: '小明',
+            telephone: '456'
+        }
+    ]
+
+    const columns = [
+        {
+            title: '用户名',
+            dataIndex: 'username'
+        },
+
+        {
+            title: '手机号',
+            dataIndex: 'telephone'
+        }
+    ]
+
+    return (
+        <Table
+            onChange={v => {
+                console.log('onChange -', v);
+            }}
+            columns={columns}
+            dataSource={dataSource}
+            ...你的配置
+        />
+    )
+}
+```
+
 ## tsx
+
 ```tsx
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
@@ -191,6 +261,7 @@ export default (): JSX.Element => {
 ```
 
 ## jsx
+
 ```jsx
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
@@ -385,7 +456,6 @@ interface Props extends React.PropsWithChildren<any> {
     }
 }
 ```
-
 表格列的配置描述，是 columns 中的一项：
 ```ts
 export interface IColumns {
