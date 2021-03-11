@@ -344,7 +344,7 @@ const Table = (props: Props): JSX.Element => {
     const Loading = () => {
         return (
             <View className="loading">
-                <Text>加载中</Text>
+                <View className="circle"/>
             </View>
         );
     };

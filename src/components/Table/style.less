@@ -1,4 +1,14 @@
 @head_height: unit(88, rpx);
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(359deg)
+  }
+}
+
 .taro3table {
   position: relative;
   max-width: 100vw;
@@ -7,11 +17,11 @@
 
   .loading {
     position: absolute;
-    height: calc(100% - unit(88, rpx));
+    height: 100%;
     width: 100%;
     left: 0;
     right: 0;
-    //top: 0;
+    top: 0;
     bottom: 0;
     background-color: rgba(255, 255, 255, .3);
     backdrop-filter: blur(unit(6, rpx));
@@ -22,13 +32,15 @@
     justify-content: center;
     font-size: unit(28, rpx);
 
-    text {
-      text-shadow: 0 0 unit(6, rpx) #333;
-    }
-
-    image {
-      height: unit(80, rpx);
-      width: unit(80, rpx);
+    > .circle {
+      height: unit(60, rpx);
+      width: unit(60, rpx);
+      border-top: unit(8, rpx) solid rgba(153, 153, 153, .7);
+      border-right: unit(8, rpx) solid rgba(153, 153, 153, .7);
+      border-bottom: unit(8, rpx) solid rgba(153, 153, 153, .7);
+      border-left: unit(8, rpx) solid transparent;
+      border-radius: 50%;
+      animation: rotate 1s linear infinite;
     }
   }
 

@@ -2,9 +2,14 @@
 
 echo "--- BUILD START ---"
 
+# delete
 rm -rf build && \
-mkdir build && \
-cp src/index.js build/index.js && \
-cp -r src/components build/components && \
+mkdir build
+
+# move
+cp -r src/components build/components
+
+# clear
+rm -rf build/components/Table/style.less && \
 
 echo "--- BUILD FINISH ---"
