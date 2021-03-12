@@ -85,7 +85,7 @@ export default () => {
 ```tsx
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
-import Table, {IColumns} from '../components/Table';
+import Table, {IColumns} from 'taro3-table';
 
 // 模拟请求数据
 const getData = () => {
