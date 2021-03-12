@@ -1,5 +1,5 @@
 // base
-import React, {memo, useCallback, useEffect, useState, CSSProperties} from 'react';
+import React, {memo, useCallback, useEffect, useState, CSSProperties, useMemo} from 'react';
 import Taro from '@tarojs/taro';
 import classnames from 'classnames';
 
@@ -95,6 +95,7 @@ const Table = (props: Props): JSX.Element => {
     const [columns, setColumns] = useState<IColumns[]>(pColumns);
     const [expansion, setExpansion] = useState<boolean>(false); // 是否展开
 
+    // effects
     useEffect(() => {
         onChange(dataSource);
     }, [dataSource]);
@@ -247,7 +248,7 @@ const Table = (props: Props): JSX.Element => {
                 className={classnames({
                     'title': true,
                     'fixed': column.fixed,
-                    [column.titleClassName as string]: true,
+                    [column.titleClassName || '']: true,
                     [titleClassName]: true,
                 })}
                 style={{
@@ -357,10 +358,20 @@ const Table = (props: Props): JSX.Element => {
         );
     };
 
+    // memos
+    const wrapWidth = useMemo((): number => {
+        return columns.reduce(function (prev, cur) {
+            return prev + (cur.width || DEFAULT_COL_WIDTH);
+        }, 0);
+    }, [columns]);
+
     return (
         <View
             className={classnames(['taro3table', className])}
-            style={style}
+            style={{
+                width: wrapWidth,
+                ...style
+            }}
         >
             {loading && (<Loading/>)}
             <ScrollView
