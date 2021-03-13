@@ -70,9 +70,6 @@ export default () => {
 
     return (
         <Table
-            onChange={v => {
-                console.log('onChange -', v);
-            }}
             columns={columns}
             dataSource={dataSource}
             ...你的配置
@@ -275,6 +272,7 @@ export default (): JSX.Element => {
 | titleClassName | 统一设置表头单元格 css 类名 | string | 否 |  |
 | loading | 是否加载中 | boolean | 否 |  |
 | onChange | 表格数据变化钩子 | (dataSource: any[]) => void | 否 |  |
+| multipleSort | 是否开启多列排序 | boolean | 否 | false |
 | scroll | 表格是否可滚动，也可以指定滚动区域的宽、高 | { x?: number &#124; string &#124; boolean, y?: number &#124; string &#124; boolean } | 否 |  |
 
 

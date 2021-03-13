@@ -11,7 +11,6 @@ import './style.css';
 
 // constants
 const DEFAULT_COL_WIDTH = 100; // 默认列宽
-const MULTIPLE_SORT = true; // 是否支持多列排序
 const JC_TA_MAP = {
     'left': 'flex-start',
     'center': 'center',
@@ -62,6 +61,7 @@ interface Props extends React.PropsWithChildren<any> {
     titleClassName?: string; // 统一设置表头单元格 css 类名
     loading?: boolean; // 是否加载中
     onChange?: (dataSource: DataSource) => void; // 表格数据变化钩子
+    multipleSort?: boolean; // 是否开启多列排序
 
     // 表格是否可滚动，也可以指定滚动区域的宽、高
     scroll?: {
@@ -87,15 +87,26 @@ const Table = (props: Props): JSX.Element => {
         colClassName = '',
         onChange = (): void => {
         },
+        multipleSort = false,
         scroll = {}
     } = props;
 
     // states
+    const [error, setError] = useState<boolean>(false);
     const [dataSource, setDataSource] = useState<DataSource>(pDataSource);
     const [columns, setColumns] = useState<IColumns[]>(pColumns);
     const [expansion, setExpansion] = useState<boolean>(false); // 是否展开
 
     // effects
+    useEffect(() => {
+        if (pColumns.some((i: AnyOpt) => {
+            return !['number', 'undefined'].includes(typeof i.width);
+        })) {
+            console.error('[taro3-table] -', '列配置 width 参数类型需为 number');
+            setError(true);
+        }
+    }, []);
+
     useEffect(() => {
         onChange(dataSource);
     }, [dataSource]);
@@ -159,7 +170,7 @@ const Table = (props: Props): JSX.Element => {
 
         const temp: IColumns[] = [...columns];
 
-        if (!MULTIPLE_SORT) {
+        if (!multipleSort) {
             temp.forEach((j: IColumns, i: number): void => {
                 if (i !== index) {
                     delete j.sortOrder;
@@ -350,6 +361,14 @@ const Table = (props: Props): JSX.Element => {
         );
     };
 
+    const Error = () => {
+        return (
+            <View className="error">
+                <Text>错误</Text>
+            </View>
+        );
+    };
+
     const Empty = () => {
         return (
             <View className="nothing">
@@ -374,6 +393,7 @@ const Table = (props: Props): JSX.Element => {
             }}
         >
             {loading && (<Loading/>)}
+            {error && (<Error/>)}
             <ScrollView
                 className="table"
                 scroll-x={(dataSource.length !== 0) && (scroll.x)}

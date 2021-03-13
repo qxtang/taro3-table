@@ -11,7 +11,6 @@ import './style.css';
 
 // constants
 const DEFAULT_COL_WIDTH = 100; // 默认列宽
-const MULTIPLE_SORT = true; // 是否支持多列排序
 const JC_TA_MAP = {
     'left': 'flex-start',
     'center': 'center',
@@ -35,15 +34,26 @@ const Table = (props) => {
         colClassName = '',
         onChange = () => {
         },
+        multipleSort = false,
         scroll = {}
     } = props;
 
     // states
+    const [error, setError] = useState(false);
     const [dataSource, setDataSource] = useState(pDataSource);
     const [columns, setColumns] = useState(pColumns);
     const [expansion, setExpansion] = useState(false); // 是否展开
 
     // effects
+    useEffect(() => {
+        if (pColumns.some((i) => {
+            return !['number', 'undefined'].includes(typeof i.width);
+        })) {
+            console.error('[taro3-table] -', '列配置 width 参数类型需为 number');
+            setError(true);
+        }
+    }, []);
+
     useEffect(() => {
         onChange(dataSource);
     }, [dataSource]);
@@ -107,7 +117,7 @@ const Table = (props) => {
 
         const temp = [...columns];
 
-        if (!MULTIPLE_SORT) {
+        if (!multipleSort) {
             temp.forEach((j, i) => {
                 if (i !== index) {
                     delete j.sortOrder;
@@ -298,6 +308,14 @@ const Table = (props) => {
         );
     };
 
+    const Error = () => {
+        return (
+            <View className="error">
+                <Text>错误</Text>
+            </View>
+        );
+    };
+
     const Empty = () => {
         return (
             <View className="nothing">
@@ -322,6 +340,7 @@ const Table = (props) => {
             }}
         >
             {loading && (<Loading/>)}
+            {error && (<Error/>)}
             <ScrollView
                 className="table"
                 scroll-x={(dataSource.length !== 0) && (scroll.x)}
