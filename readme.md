@@ -18,6 +18,7 @@
 </div>
 
 # 主要功能
+
 - 自定义样式
 - 单列多列排序
 - 自定义排序
@@ -26,10 +27,15 @@
 
 ![](https://github.com/qxtang/taro3-table/raw/master/preview.gif)
 
+- 有许多不足与 bug 欢迎提 [issues](https://github.com/qxtang/taro3-table/issues)
+- 如果觉得对您有帮助，请给我 [点个star](https://github.com/qxtang/taro3-table) 哦，谢谢
+
 # 注意
+
 只能在基于 Taro3.x 和 React 的微信小程序项目中使用。
 
 # 安装
+
 ```sh
 # npm 安装：
 npm install taro3-table
@@ -39,6 +45,7 @@ yarn add taro3-table
 ```
 
 # 使用
+
 ```jsx
 import React from 'react';
 import Table from 'taro3-table';
@@ -72,13 +79,14 @@ export default () => {
         <Table
             columns={columns}
             dataSource={dataSource}
-            ...你的配置
+            // ...你的配置
         />
     )
 }
 ```
 
 # 示例
+
 ```jsx
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
@@ -264,11 +272,10 @@ export default () => {
     );
 };
 
-
-
 ```
 
 # 参数说明
+
 | 参数 | 描述 | 类型 | 必传 | 默认值 |
 | ---- | ---- | ---- | ---- | ---- |
 | columns | 表格列的配置描述，详见下方 | IColumns[] | 是 | [] |
@@ -287,8 +294,8 @@ export default () => {
 | multipleSort | 是否开启多列排序 | boolean | 否 | false |
 | scroll | 表格是否可滚动，也可以指定滚动区域的宽、高 | { x?: number &#124; string &#124; boolean, y?: number &#124; string &#124; boolean } | 否 |  |
 
-
 ## column
+
 表格列的配置描述，是 columns 中的一项：
 
 | 参数 | 描述 | 类型 | 必传 | 默认值 |
@@ -311,5 +318,4 @@ export default () => {
 | fixed | 固定列 | 'left' &#124; 'right' | 否 |  |
 | expandable | 该列是否启用点击展开收起功能，默认 true | boolean | 否 | true |
 
-<br />
-如果觉得对您有帮助，<a href="https://github.com/qxtang/taro3-table" target="_blank">请给我点个 star 哦</a>，谢谢
+

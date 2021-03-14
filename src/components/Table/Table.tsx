@@ -68,7 +68,7 @@ const Table = (props: Props): JSX.Element => {
         onChange(dataSource);
     }, [dataSource]);
 
-    // 当 columns、 dataSource 有变化时进行排序
+    // 当 columns、pColumns、dataSource 有变化时进行排序
     useEffect(() => {
         // 查找需要排序的列
         const sortColumns: IColumns[] = columns.filter(item => item.sortOrder) || [];
@@ -112,7 +112,7 @@ const Table = (props: Props): JSX.Element => {
         });
 
         setDataSource(result);
-    }, [columns, pDataSource]);
+    }, [columns, pColumns, pDataSource]);
 
     // methods
     /**

@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
-// import Table from '../../build/Table';
-import Table from '../components/Table';
+// import Table from 'taro3-table';
+import Table from '../../build/Table';
+// import Table from '../components/Table';
 
 // 模拟请求数据
 const getData = () => {

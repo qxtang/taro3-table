@@ -1,8 +1,8 @@
 {
   "name": "taro3-table",
-  "version": "1.0.14",
+  "version": "1.0.17",
   "author": "qxtang",
-  "main": "index.js",
+  "main": "build/Table/index.js",
   "templateInfo": {
     "name": "default",
     "typescript": true,
@@ -10,7 +10,6 @@
   },
   "files": [
     "build",
-    "index.js",
     "readme.md",
     "package.json"
   ],
