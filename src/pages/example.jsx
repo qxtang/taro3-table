@@ -9,9 +9,7 @@ const getData = () => {
         setTimeout(() => {
             resolve(
                 new Array(20).fill(null).map((_, key) => {
-
                     const random = (n) => Math.ceil(Math.random() * n);
-
                     return {
                         user_id: key + 1,
                         username: `name_${random(1e15)}`,
