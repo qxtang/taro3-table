@@ -1,50 +1,54 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
-import Table, {IColumns} from 'taro3-table';
+// import Table from '../../build/Table';
+import Table from '../components/Table';
 
 // 模拟请求数据
 const getData = () => {
-    return new Promise<any[]>((resolve) => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve(
-                new Array(20).fill(null).map((_, i: number): any => {
-                    const random = (n) => String(parseInt(String(Math.random() * n)));
+                new Array(20).fill(null).map((_, key) => {
+
+                    const random = (n) => Math.ceil(Math.random() * n);
+
                     return {
-                        user_id: i + 1,
-                        username: `username_${random(1e15)}`,
+                        user_id: key + 1,
+                        username: `name_${random(1e15)}`,
                         telephone: random(1e15),
-                        sex: (i + 1) % 2,
-                        status: !!((i + 1) % 2),
-                        address: `${i + 1}_地址地址地址_${random(1e15)}`,
+                        price: random(1e5),
+                        sex: (key + 1) % 2,
+                        address: `地址_${random(1e15)}`,
                         orderInfo: {
                             price: random(1e3),
-                            orderName: `orderName_${i + 1}`,
-                            createTime: `createTime_${i + 1}`,
+                            orderName: `orderName_${key + 1}`,
+                            createTime: `createTime_${key + 1}`,
                         },
                         createTime: new Date().toLocaleString(),
+                        status: (Math.random() > 0.5),
                     };
                 })
             );
-        }, 1000);
+        }, 600);
     });
 };
 
-export default (): JSX.Element => {
-    const [loading, setLoading] = useState<boolean>(false);
-    const [dataSource, setDataSource] = useState<any[]>([]);
+export default () => {
+    const [loading, setLoading] = useState(false);
+    const [dataSource, setDataSource] = useState([]);
 
     useEffect(() => {
         fetchData();
     }, []);
 
-    const fetchData = async (): Promise<void> => {
+    const fetchData = async () => {
         setLoading(true);
-        const data: any[] = await getData();
+        const data = await getData();
         setDataSource(data);
         setLoading(false);
     };
 
-    const columns: IColumns[] = [
+    const columns = [
         {
             title: '用户名',
             dataIndex: 'username',
@@ -55,6 +59,21 @@ export default (): JSX.Element => {
 
             render: (t) => {
                 return <Text style={{color: 'red'}}>{t}</Text>;
+            },
+        },
+        {
+            title: '性别',
+            dataIndex: 'sex',
+            width: 60,
+            render: (t) => {
+                switch (String(t)) {
+                    case '0':
+                        return '男';
+                    case '1':
+                        return '女';
+                    default:
+                        return '-';
+                }
             },
         },
 
@@ -74,42 +93,23 @@ export default (): JSX.Element => {
             },
         },
         {
-            title: '性别',
-            dataIndex: 'sex',
-            render: (t) => {
-                switch (String(t)) {
-                    case '0':
-                        return '男';
-                    case '1':
-                        return '女';
-                    default:
-                        return '未知性别';
-                }
-            },
-        },
-        {
-            title: '状态',
-            dataIndex: 'status',
+            title: '余额',
+            dataIndex: 'price',
             sort: true,
-
-            // 禁用点击展开功能
-            expandable: false,
-            render: (t) => {
-                return <Button size="mini">{t.toString()}</Button>;
-            },
+            render: t => '￥' + t
         },
         {
             title: '地址',
             dataIndex: 'address',
         },
         {
-            title: '订单信息',
+            title: '订单金额',
             dataIndex: 'orderInfo',
             render: (_, record) => record?.orderInfo?.price,
 
             // 自定义排序方式示例
             sort: true,
-            sorter: (a, b, sortOrder): number => {
+            sorter: (a, b, sortOrder) => {
                 if (sortOrder === 'ascend') {
                     return a.orderInfo.price - b.orderInfo.price;
                 } else {
@@ -118,23 +118,36 @@ export default (): JSX.Element => {
             },
         },
         {
-            // 右固定列示例
-            fixed: 'right',
             title: '创建时间',
             dataIndex: 'createTime',
+        },
+        {
+            title: '操作',
+            dataIndex: 'status',
+            sort: true,
+
+            // 右固定列示例
+            fixed: 'right',
+
+            // 禁用点击展开功能
+            expandable: false,
+
+            render: (t) => {
+                return <Button type={t ? 'default' : 'warn'} size="mini">{t ? '启用' : '禁用'}</Button>;
+            },
         },
     ];
 
     return (
-        <View>
-            <View style={{margin: '20px 0 20px'}}>
+        <View className="example">
+            <View className="btns">
                 <Button
                     size="mini"
                     onClick={() => {
                         const temp = [...dataSource];
-                        temp[3].telephone = 500;
-                        temp[4].telephone = 600;
-                        temp[5].telephone = 700;
+                        temp[3].price = 500;
+                        temp[4].price = 600;
+                        temp[5].price = 700;
                         setDataSource(temp);
                     }}
                 >
@@ -155,6 +168,7 @@ export default (): JSX.Element => {
                 onChange={(v) => {
                     console.log('onChange -', v);
                 }}
+                colStyle={{padding: '0 5px'}}
                 columns={columns}
                 dataSource={dataSource}
                 rowKey="user_id"

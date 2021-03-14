@@ -1,11 +1,10 @@
 export default {
   pages: [
-    'pages/example',
-    'pages/test00'
+    'pages/example'
   ],
   window: {
     backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
+    navigationBarBackgroundColor: '#fbfbfb',
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black'
   }

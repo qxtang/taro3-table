@@ -1,6 +1,6 @@
 {
   "name": "taro3-table",
-  "version": "1.0.11",
+  "version": "1.0.14",
   "author": "qxtang",
   "main": "index.js",
   "templateInfo": {
@@ -21,7 +21,7 @@
   "scripts": {
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
-    "g": "bash ./generate.sh"
+    "generate": "bash ./generate.sh"
   },
   "browserslist": [
     "last 3 versions",
@@ -32,6 +32,7 @@
     "classnames": "^2.2.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.10",
     "@babel/core": "^7.8.0",
     "@babel/runtime": "^7.7.7",
     "@tarojs/components": "3.0.22",
@@ -53,7 +54,6 @@
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
     "stylelint": "9.3.0",
-    "typescript": "^3.7.0",
-    "taro3-table": "^1.0.12"
+    "typescript": "^3.7.0"
   }
 }
