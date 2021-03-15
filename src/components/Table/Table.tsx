@@ -27,7 +27,7 @@ import {
     Props
 } from './types';
 
-const Table = (props: Props): JSX.Element => {
+const Table = (props: Props): JSX.Element | null => {
     // variables
     const {
         columns: pColumns = [],
@@ -56,17 +56,17 @@ const Table = (props: Props): JSX.Element => {
 
     // effects
     useEffect(() => {
+        onChange(dataSource);
+    }, [dataSource]);
+
+    useEffect(() => {
         if (pColumns.some((i: AnyOpt) => {
             return !['number', 'undefined'].includes(typeof i.width);
         })) {
             console.error('[taro3-table] -', '列配置 width 参数类型需为 number');
             setError(true);
         }
-    }, []);
-
-    useEffect(() => {
-        onChange(dataSource);
-    }, [dataSource]);
+    }, [columns]);
 
     // 当 columns、pColumns、dataSource 有变化时进行排序
     useEffect(() => {
@@ -318,14 +318,6 @@ const Table = (props: Props): JSX.Element => {
         );
     };
 
-    const Error = () => {
-        return (
-            <View className="error">
-                <Text>错误</Text>
-            </View>
-        );
-    };
-
     const Empty = () => {
         return (
             <View className="nothing">
@@ -341,6 +333,10 @@ const Table = (props: Props): JSX.Element => {
         }, 0);
     }, [columns]);
 
+    if (error) {
+        return null;
+    }
+
     return (
         <View
             className={classnames(['taro3table', className])}
@@ -350,7 +346,6 @@ const Table = (props: Props): JSX.Element => {
             }}
         >
             {loading && (<Loading/>)}
-            {error && (<Error/>)}
             <ScrollView
                 className="table"
                 scroll-x={(dataSource.length !== 0) && (scroll.x)}
