@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
-// import Table from 'taro3-table';
-import Table from '../../build/Table';
-// import Table from '../components/Table';
+// import Table from '../../build/Table';
+import Table from '../components/Table';
 
 // 模拟请求数据
 const getData = () => {
@@ -35,19 +34,7 @@ const getData = () => {
 export default () => {
     const [loading, setLoading] = useState(false);
     const [dataSource, setDataSource] = useState([]);
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    const fetchData = async () => {
-        setLoading(true);
-        const data = await getData();
-        setDataSource(data);
-        setLoading(false);
-    };
-
-    const columns = [
+    const [columns, setColumns] = useState([
         {
             title: '用户名',
             dataIndex: 'username',
@@ -123,7 +110,6 @@ export default () => {
         {
             title: '操作',
             dataIndex: 'status',
-            sort: true,
 
             // 右固定列示例
             fixed: 'right',
@@ -135,7 +121,18 @@ export default () => {
                 return <Button type={t ? 'default' : 'warn'} size="mini">{t ? '启用' : '禁用'}</Button>;
             },
         },
-    ];
+    ]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        setLoading(true);
+        const data = await getData();
+        setDataSource(data);
+        setLoading(false);
+    };
 
     return (
         <View className="example">
@@ -152,6 +149,13 @@ export default () => {
                 >
                     修改数据
                 </Button>
+                <Button size="mini" onClick={() => {
+                    const temp = [...columns];
+                    temp[2].sortOrder = Math.random() > 0.5 ? 'descend' : 'ascend';
+                    temp[2].title = Math.ceil(Math.random() * 1000);
+                    setColumns(temp)
+                }}>修改columns</Button>
+                <Button size="mini" onClick={() => setColumns([])}>清空columns</Button>
                 <Button size="mini" onClick={fetchData}>
                     刷新数据
                 </Button>

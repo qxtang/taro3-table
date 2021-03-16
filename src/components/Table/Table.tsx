@@ -2,6 +2,7 @@
 import React, {memo, useCallback, useEffect, useState, useMemo} from 'react';
 import Taro from '@tarojs/taro';
 import classnames from 'classnames';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 // components
 import {ScrollView, Text, View} from '@tarojs/components';
@@ -68,7 +69,11 @@ const Table = (props: Props): JSX.Element | null => {
         }
     }, [columns]);
 
-    // 当 columns、pColumns、dataSource 有变化时进行排序
+    useDeepCompareEffect(() => {
+        setColumns(pColumns);
+    }, [pColumns]);
+
+    // 排序
     useEffect(() => {
         // 查找需要排序的列
         const sortColumns: IColumns[] = columns.filter(item => item.sortOrder) || [];
@@ -320,7 +325,7 @@ const Table = (props: Props): JSX.Element | null => {
 
     const Empty = () => {
         return (
-            <View className="nothing">
+            <View className="empty">
                 <Text>暂无数据</Text>
             </View>
         );
@@ -363,9 +368,7 @@ const Table = (props: Props): JSX.Element | null => {
                 >
                     {
                         (columns.length === 0) ? (
-                            <View className="nothing">
-                                <Text>暂无数据</Text>
-                            </View>
+                            <Empty/>
                         ) : columns.map((item: IColumns, index: number): JSX.Element => {
                             return (
                                 <Title
@@ -379,9 +382,7 @@ const Table = (props: Props): JSX.Element | null => {
                 </View>
                 <View className="body">
                     {
-                        ((dataSource.length === 0) && (!loading)) ? (
-                            <Empty/>
-                        ) : dataSource.map((dataSourceItem: AnyOpt, index: number): JSX.Element => {
+                        (dataSource.length > 0) ? dataSource.map((dataSourceItem: AnyOpt, index: number): JSX.Element => {
                             return (
                                 <Row
                                     key={dataSourceItem[rowKey]}
@@ -389,7 +390,7 @@ const Table = (props: Props): JSX.Element | null => {
                                     index={index}
                                 />
                             );
-                        })
+                        }) : (<Empty/>)
                     }
                 </View>
             </ScrollView>
