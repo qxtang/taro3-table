@@ -219,8 +219,8 @@ const Table = (props: Props): JSX.Element | null => {
             <View
                 onClick={handleClickTitle.bind(this, column, index)}
                 className={classnames({
-                    'title': true,
-                    'fixed': column.fixed,
+                    'taro3table_title': true,
+                    'taro3table_fixed': column.fixed,
                     [column.titleClassName || '']: true,
                     [titleClassName]: true,
                 })}
@@ -236,17 +236,17 @@ const Table = (props: Props): JSX.Element | null => {
                 <Text>{column.title}</Text>
                 {
                     column.sort && (
-                        <View className="sortBtn">
+                        <View className="taro3table_sortBtn">
                             <View className={classnames({
-                                'btn': true,
-                                'ascend': true,
-                                'active': (column.sortOrder === 'ascend')
+                                'taro3table_btn': true,
+                                'taro3table_ascend': true,
+                                'taro3table_active': (column.sortOrder === 'ascend')
                             })}
                             />
                             <View className={classnames({
-                                'btn': true,
-                                'descend': true,
-                                'active': (column.sortOrder === 'descend')
+                                'taro3table_btn': true,
+                                'taro3table_descend': true,
+                                'taro3table_active': (column.sortOrder === 'descend')
                             })}
                             />
                         </View>
@@ -266,7 +266,7 @@ const Table = (props: Props): JSX.Element | null => {
             <View
                 key={dataSourceItem[rowKey]}
                 className={classnames({
-                    'row': true,
+                    'taro3table_row': true,
                     [rowClassName]: true,
                 })}
                 style={rowStyle}
@@ -295,9 +295,9 @@ const Table = (props: Props): JSX.Element | null => {
                                 key={columnItem.key || columnItem.dataIndex}
                                 className={classnames({
                                     [colClassName]: true,
-                                    'col': true,
-                                    'fixed': columnItem.fixed,
-                                    'expansion': expansion,
+                                    'taro3table_col': true,
+                                    'taro3table_fixed': columnItem.fixed,
+                                    'taro3table_expansion': expansion,
                                     [columnItem.className as string]: true
                                 })}
                                 style={{
@@ -317,15 +317,15 @@ const Table = (props: Props): JSX.Element | null => {
 
     const Loading = () => {
         return (
-            <View className="loading">
-                <View className="circle"/>
+            <View className="taro3table_loading">
+                <View className="taro3table_circle"/>
             </View>
         );
     };
 
     const Empty = () => {
         return (
-            <View className="empty">
+            <View className="taro3table_empty">
                 <Text>暂无数据</Text>
             </View>
         );
@@ -352,7 +352,7 @@ const Table = (props: Props): JSX.Element | null => {
         >
             {loading && (<Loading/>)}
             <ScrollView
-                className="table"
+                className="taro3table_table"
                 scroll-x={(dataSource.length !== 0) && (scroll.x)}
                 scroll-y={scroll.y}
                 style={{
@@ -362,8 +362,8 @@ const Table = (props: Props): JSX.Element | null => {
             >
                 <View
                     className={classnames({
-                        'head': true,
-                        'scroll': scroll.y,
+                        'taro3table_head': true,
+                        'taro3table_scroll': scroll.y,
                     })}
                 >
                     {
@@ -380,7 +380,7 @@ const Table = (props: Props): JSX.Element | null => {
                         })
                     }
                 </View>
-                <View className="body">
+                <View className="taro3table_body">
                     {
                         (dataSource.length > 0) ? dataSource.map((dataSourceItem: AnyOpt, index: number): JSX.Element => {
                             return (

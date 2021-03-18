@@ -16,7 +16,7 @@
   border-radius: unit(8, rpx);
   border: unit(2, rpx) solid rgba(67, 120, 190, 0.1);
 
-  .loading {
+  .taro3table_loading {
     position: absolute;
     height: calc(100% + unit(4, rpx));
     width: calc(100% + unit(4, rpx));
@@ -33,7 +33,7 @@
     justify-content: center;
     font-size: unit(28, rpx);
 
-    > .circle {
+    > .taro3table_circle {
       height: unit(60, rpx);
       width: unit(60, rpx);
       border-top: unit(8, rpx) solid rgba(153, 153, 153, 0.7);
@@ -45,11 +45,11 @@
     }
   }
 
-  .table {
+  .taro3table_table {
     min-height: 100%;
     min-width: 100%;
 
-    .empty {
+    .taro3table_empty {
       width: 100%;
       text-align: center;
       font-size: unit(24, rpx);
@@ -58,7 +58,7 @@
       line-height: unit(88, rpx);
     }
 
-    .head {
+    .taro3table_head {
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -67,13 +67,13 @@
       height: @head_height;
       background-color: #f7fbff;
 
-      &.scroll {
+      &.taro3table_scroll {
         position: sticky;
         top: 0;
         z-index: 93;
       }
 
-      > .title {
+      > .taro3table_title {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -89,44 +89,44 @@
           opacity: 0.7;
         }
 
-        &.fixed {
+        &.taro3table_fixed {
           position: sticky;
           top: 0;
         }
 
-        > .sortBtn {
+        > .taro3table_sortBtn {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           margin-left: unit(10, rpx);
 
-          > .btn {
+          > .taro3table_btn {
             @color: #e2e2e2;
             @active-color: #3975c6;
             @size: unit(8, rpx);
             height: 0;
             width: 0;
 
-            &.ascend {
+            &.taro3table_ascend {
               border-top: @size solid transparent;
               border-left: @size solid transparent;
               border-right: @size solid transparent;
               border-bottom: @size solid @color;
               margin-bottom: unit(4, rpx);
 
-              &.active {
+              &.taro3table_active {
                 border-bottom-color: @active-color;
               }
             }
 
-            &.descend {
+            &.taro3table_descend {
               border-top: @size solid @color;
               border-left: @size solid transparent;
               border-right: @size solid transparent;
               border-bottom: @size solid transparent;
 
-              &.active {
+              &.taro3table_active {
                 border-top-color: @active-color;
               }
             }
@@ -135,11 +135,11 @@
       }
     }
 
-    .body {
+    .taro3table_body {
       @min-height: unit(120, rpx);
       min-height: @min-height;
 
-      > .row {
+      > .taro3table_row {
         min-height: @min-height;
         position: relative;
         display: flex;
@@ -155,7 +155,7 @@
           border-top: none;
         }
 
-        > .col {
+        > .taro3table_col {
           min-height: @min-height;
           background-color: #ffffff;
           display: flex;
@@ -176,7 +176,7 @@
           }
 
           // 展开
-          &.expansion {
+          &.taro3table_expansion {
             height: 100%;
 
             text {
@@ -188,7 +188,7 @@
             }
           }
 
-          &.fixed {
+          &.taro3table_fixed {
             position: sticky;
             top: 0;
             z-index: 92;

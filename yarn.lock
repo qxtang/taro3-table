@@ -961,7 +961,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4":
   version "7.13.10"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.13.10.tgz?cache=0&sync_timestamp=1615243066705&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
   integrity sha1-R9QqV7YJX0Ro2kQDiP262L6/DX0=
@@ -1335,6 +1335,15 @@
   version "16.14.5"
   resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.14.5.tgz?cache=0&sync_timestamp=1615113978344&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-16.14.5.tgz#2c39b5cadefaf4829818f9219e5e093325979f4d"
   integrity sha1-LDm1yt769IKYGPkhnl4JMyWXn00=
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^17.0.0":
+  version "17.0.3"
+  resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-17.0.3.tgz?cache=0&sync_timestamp=1615113978344&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
+  integrity sha1-um4hU2hQGsOCaVHu8pBFdMJizHk=
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3442,6 +3451,11 @@ depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npm.taobao.org/depd/download/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
+
+dequal@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npm.taobao.org/dequal/download/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
+  integrity sha1-hcoiAl46h+Ze91p6Q3s1KEp+MZ0=
 
 des.js@^1.0.0:
   version "1.0.1"
@@ -9880,6 +9894,15 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-deep-compare-effect@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.npm.taobao.org/use-deep-compare-effect/download/use-deep-compare-effect-1.6.1.tgz#061a0ac5400aa0461e33dddfaa2a98bca873182a"
+  integrity sha1-BhoKxUAKoEYeM93fqiqYvKhzGCo=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@types/react" "^17.0.0"
+    dequal "^2.0.2"
 
 use@^3.1.0:
   version "3.1.1"
