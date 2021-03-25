@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from '@tarojs/components';
+import Taro, {usePullDownRefresh} from '@tarojs/taro';
 // import Table from '../../build/Table';
-import Table from '../components/Table';
+import Table from '../../components/Table';
 
 // 模拟请求数据
 const getData = () => {
@@ -27,7 +28,7 @@ const getData = () => {
                     };
                 })
             );
-        }, 600);
+        }, 1000);
     });
 };
 
@@ -127,11 +128,19 @@ export default () => {
         fetchData();
     }, []);
 
+    // 下拉刷新示例
+    usePullDownRefresh(() => {
+        fetchData().then(() => {
+            Taro.stopPullDownRefresh();
+        });
+    });
+
     const fetchData = async () => {
         setLoading(true);
         const data = await getData();
         setDataSource(data);
         setLoading(false);
+        return data;
     };
 
     return (
@@ -153,7 +162,7 @@ export default () => {
                     const temp = [...columns];
                     temp[2].sortOrder = Math.random() > 0.5 ? 'descend' : 'ascend';
                     temp[2].title = Math.ceil(Math.random() * 1000);
-                    setColumns(temp)
+                    setColumns(temp);
                 }}>修改columns</Button>
                 <Button size="mini" onClick={() => setColumns([])}>清空columns</Button>
                 <Button size="mini" onClick={fetchData}>
