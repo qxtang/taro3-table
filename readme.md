@@ -46,6 +46,8 @@ yarn add taro3-table
 
 # 使用
 
+## jsx
+
 ```jsx
 import React from 'react';
 import Table from 'taro3-table';
@@ -64,6 +66,47 @@ export default () => {
     ]
 
     const columns = [
+        {
+            title: '用户名',
+            dataIndex: 'username'
+        },
+
+        {
+            title: '手机号',
+            dataIndex: 'telephone'
+        }
+    ]
+
+    return (
+        <Table
+            columns={columns}
+            dataSource={dataSource}
+            // ...你的配置
+        />
+    )
+}
+```
+
+## tsx
+
+```tsx
+import React from 'react';
+import Table, {IColumns, FixedType, SortOrder} from 'taro3-table';
+
+export default (): JSX.Element => {
+
+    const dataSource = [
+        {
+            username: '小红',
+            telephone: '123'
+        },
+        {
+            username: '小明',
+            telephone: '456'
+        }
+    ]
+
+    const columns: IColumns[] = [
         {
             title: '用户名',
             dataIndex: 'username'
