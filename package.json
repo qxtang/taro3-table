@@ -1,6 +1,6 @@
 {
   "name": "taro3-table",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "author": "qxtang",
   "main": "build/Table/index.js",
   "templateInfo": {
@@ -28,7 +28,10 @@
     "Android >= 4.1",
     "ios >= 8"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "use-deep-compare-effect": "^1.6.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.8.0",
@@ -44,7 +47,6 @@
     "@typescript-eslint/eslint-plugin": "^2.x",
     "@typescript-eslint/parser": "^2.x",
     "babel-preset-taro": "3.0.22",
-    "classnames": "^2.2.6",
     "eslint": "^6.8.0",
     "eslint-config-taro": "3.0.22",
     "eslint-plugin-import": "^2.12.0",
@@ -54,7 +56,6 @@
     "react-dom": "^16.10.0",
     "stylelint": "9.3.0",
     "taro3-table": "^1.0.23",
-    "typescript": "^3.7.0",
-    "use-deep-compare-effect": "^1.6.1"
+    "typescript": "^3.7.0"
   }
 }
