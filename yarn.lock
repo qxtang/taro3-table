@@ -9395,10 +9395,10 @@ tar@^6.0.2:
     mkdirp "^1.0.3"
     yallist "^4.0.0"
 
-taro3-table@^1.0.23:
-  version "1.0.23"
-  resolved "https://registry.nlark.com/taro3-table/download/taro3-table-1.0.23.tgz?cache=0&sync_timestamp=1620010165678&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftaro3-table%2Fdownload%2Ftaro3-table-1.0.23.tgz#1321a798581e0b469996bb7e84f02c284928fce1"
-  integrity sha1-EyGnmFgeC0aZlrt+hPAsKEko/OE=
+taro3-table@latest:
+  version "1.0.24"
+  resolved "https://registry.nlark.com/taro3-table/download/taro3-table-1.0.24.tgz#855713162250525295272f7bbbb05fcf80be0eb3"
+  integrity sha1-hVcTFiJQUlKVJy97u7Bfz4C+DrM=
   dependencies:
     classnames "^2.2.6"
     use-deep-compare-effect "^1.6.1"

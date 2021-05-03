@@ -1,6 +1,6 @@
 {
   "name": "taro3-table",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "author": "qxtang",
   "main": "build/Table/index.js",
   "templateInfo": {
@@ -55,7 +55,7 @@
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
     "stylelint": "9.3.0",
-    "taro3-table": "^1.0.23",
+    "taro3-table": "latest",
     "typescript": "^3.7.0"
   }
 }
