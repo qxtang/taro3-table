@@ -16,5 +16,6 @@ cp -r src/components/Table build
 # clear
 rm -rf build/Table/style.less
 rm -rf build/Table/Table.tsx
+rm -rf build/Table/types.ts
 
 echo "--- BUILD FINISH ---"

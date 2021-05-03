@@ -9395,6 +9395,14 @@ tar@^6.0.2:
     mkdirp "^1.0.3"
     yallist "^4.0.0"
 
+taro3-table@^1.0.23:
+  version "1.0.23"
+  resolved "https://registry.nlark.com/taro3-table/download/taro3-table-1.0.23.tgz?cache=0&sync_timestamp=1620010165678&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftaro3-table%2Fdownload%2Ftaro3-table-1.0.23.tgz#1321a798581e0b469996bb7e84f02c284928fce1"
+  integrity sha1-EyGnmFgeC0aZlrt+hPAsKEko/OE=
+  dependencies:
+    classnames "^2.2.6"
+    use-deep-compare-effect "^1.6.1"
+
 terser-webpack-plugin@^1.4.3:
   version "1.4.5"
   resolved "https://registry.npm.taobao.org/terser-webpack-plugin/download/terser-webpack-plugin-1.4.5.tgz?cache=0&sync_timestamp=1610196021147&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fterser-webpack-plugin%2Fdownload%2Fterser-webpack-plugin-1.4.5.tgz#a217aefaea330e734ffacb6120ec1fa312d6040b"

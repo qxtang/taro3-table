@@ -1,16 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Button} from '@tarojs/components';
-import Taro, {usePullDownRefresh} from '@tarojs/taro';
-// import Table from '../../build/Table';
-import Table from '../../components/Table';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Button } from '@tarojs/components';
+import Taro, { usePullDownRefresh } from '@tarojs/taro';
+import Table from 'taro3-table';
 
-// 模拟请求数据
+// 假数据
 const getData = () => {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
         setTimeout(() => {
             resolve(
                 new Array(20).fill(null).map((_, key) => {
-                    const random = (n) => Math.ceil(Math.random() * n);
+                    const random = n => Math.ceil(Math.random() * n);
                     return {
                         user_id: key + 1,
                         username: `name_${random(1e15)}`,
@@ -24,7 +23,7 @@ const getData = () => {
                             createTime: `createTime_${key + 1}`,
                         },
                         createTime: new Date().toLocaleString(),
-                        status: (Math.random() > 0.5),
+                        status: Math.random() > 0.5,
                     };
                 })
             );
@@ -44,15 +43,15 @@ export default () => {
             // 左固定列示例
             fixed: 'left',
 
-            render: (t) => {
-                return <Text style={{color: 'red'}}>{t}</Text>;
+            render: t => {
+                return <Text style={{ color: 'red' }}>{t}</Text>;
             },
         },
         {
             title: '性别',
             dataIndex: 'sex',
             width: 60,
-            render: (t) => {
+            render: t => {
                 switch (String(t)) {
                     case '0':
                         return '男';
@@ -70,7 +69,7 @@ export default () => {
             dataIndex: 'telephone',
             sort: true,
             sorter: true,
-            onSort: async (v) => {
+            onSort: async v => {
                 console.log('onSort -', v);
 
                 setLoading(true);
@@ -83,7 +82,7 @@ export default () => {
             title: '余额',
             dataIndex: 'price',
             sort: true,
-            render: t => '￥' + t
+            render: t => '￥' + t,
         },
         {
             title: '地址',
@@ -118,8 +117,12 @@ export default () => {
             // 禁用点击展开功能
             expandable: false,
 
-            render: (t) => {
-                return <Button type={t ? 'default' : 'warn'} size="mini">{t ? '启用' : '禁用'}</Button>;
+            render: t => {
+                return (
+                    <Button type={t ? 'default' : 'warn'} size="mini">
+                        {t ? '启用' : '禁用'}
+                    </Button>
+                );
             },
         },
     ]);
@@ -158,13 +161,20 @@ export default () => {
                 >
                     修改数据
                 </Button>
-                <Button size="mini" onClick={() => {
-                    const temp = [...columns];
-                    temp[2].sortOrder = Math.random() > 0.5 ? 'descend' : 'ascend';
-                    temp[2].title = Math.ceil(Math.random() * 1000);
-                    setColumns(temp);
-                }}>修改columns</Button>
-                <Button size="mini" onClick={() => setColumns([])}>清空columns</Button>
+                <Button
+                    size="mini"
+                    onClick={() => {
+                        const temp = [...columns];
+                        temp[2].sortOrder = Math.random() > 0.5 ? 'descend' : 'ascend';
+                        temp[2].title = Math.ceil(Math.random() * 1000);
+                        setColumns(temp);
+                    }}
+                >
+                    修改columns
+                </Button>
+                <Button size="mini" onClick={() => setColumns([])}>
+                    清空columns
+                </Button>
                 <Button size="mini" onClick={fetchData}>
                     刷新数据
                 </Button>
@@ -177,10 +187,10 @@ export default () => {
             </View>
 
             <Table
-                onChange={(v) => {
+                onChange={v => {
                     console.log('onChange -', v);
                 }}
-                colStyle={{padding: '0 5px'}}
+                colStyle={{ padding: '0 5px' }}
                 columns={columns}
                 dataSource={dataSource}
                 rowKey="user_id"

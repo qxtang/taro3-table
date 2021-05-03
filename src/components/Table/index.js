@@ -1,3 +1,1 @@
-import Table from './Table';
-
-export default Table;
+module.exports = require('./Table');
