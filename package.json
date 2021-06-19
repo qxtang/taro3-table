@@ -1,6 +1,6 @@
 {
   "name": "taro3-table",
-  "version": "1.0.25",
+  "version": "1.0.27",
   "author": "qxtang",
   "main": "build/Table/index.js",
   "templateInfo": {

@@ -28,7 +28,6 @@
 ![](https://github.com/qxtang/taro3-table/raw/master/preview.gif)
 
 -   有许多不足与 bug 欢迎提 [issues](https://github.com/qxtang/taro3-table/issues)
--   如果觉得对您有帮助，请给我 [点个 star](https://github.com/qxtang/taro3-table) 哦，谢谢
 
 # 注意
 
