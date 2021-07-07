@@ -1,6 +1,6 @@
 {
   "name": "taro3-table",
-  "version": "1.0.27",
+  "version": "1.0.29",
   "author": "qxtang",
   "main": "build/Table/index.js",
   "templateInfo": {
@@ -20,8 +20,7 @@
   "scripts": {
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
-    "generate": "bash ./generate.sh",
-    "pub": "yarn generate && npm publish"
+    "generate": "bash ./generate.sh"
   },
   "browserslist": [
     "last 3 versions",
