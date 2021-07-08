@@ -1,5 +1,20 @@
 # taro3-table
 
+<p>
+    <a href="https://github.com/qxtang/taro3-table/stargazers" target="_black">
+        <img src="https://img.shields.io/github/stars/qxtang/taro3-table?color=%23ffca28&logo=github&style=flat-square" alt="stars" />
+    </a>
+    <a href="https://github.com/qxtang/taro3-table/network/members" target="_black">
+        <img src="https://img.shields.io/github/forks/qxtang/taro3-table?color=%23ffca28&logo=github&style=flat-square" alt="forks" />
+    </a>
+    <a href="https://www.npmjs.com/package/taro3-table" target="_black">
+        <img src="https://img.shields.io/npm/v/taro3-table?color=%23ffca28&logo=npm&style=flat-square" alt="version" />
+    </a>
+    <a href="https://www.npmjs.com/package/taro3-table" target="_black">
+        <img src="https://img.shields.io/npm/dm/taro3-table?color=%23ffca28&logo=npm&style=flat-square" alt="downloads" />
+    </a>
+</p>
+
 基于 Taro3、React 的微信小程序端多功能表格组件
 
 # 主要功能
