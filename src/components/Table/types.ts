@@ -48,5 +48,6 @@ export interface Props extends PropsWithChildren<any> {
     scroll?: {
         x?: number | string | boolean,
         y?: number | string | boolean,
-    }
+    },
+    cellClick?:(value:object)=>void // 单元格点击
 }
