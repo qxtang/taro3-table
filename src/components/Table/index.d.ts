@@ -1,4 +1,4 @@
-import React, {CSSProperties, PropsWithChildren} from 'react';
+import React, { CSSProperties, PropsWithChildren } from 'react';
 
 export interface AnyOpt {
     [prop: string]: any;
@@ -48,7 +48,7 @@ export interface Props extends PropsWithChildren<any> {
     scroll?: {
         x?: number | string | boolean,
         y?: number | string | boolean,
-    }
+    };
 }
 
 declare const Table: React.FC<Props>;

@@ -1,12 +1,13 @@
+import { name } from '../package.json';
+
 export default {
-  pages: [
-    'pages/example/index',
-    'pages/example-ts/index',
-  ],
-  window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fbfbfb',
-    navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
-  }
-}
+    pages: [
+        'pages/example/index',
+    ],
+    window: {
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fbfbfb',
+        navigationBarTitleText: name,
+        navigationBarTextStyle: 'black'
+    }
+};

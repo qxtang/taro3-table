@@ -8,7 +8,7 @@ const INPUT = path.resolve(__dirname, '../src/components/Table/style.less');
 const OUTPUT = path.resolve(__dirname, '../src/components/Table/style.css');
 
 console.log('😁 正在监听 style.less 修改');
-fs.watchFile(INPUT, {interval: 1000}, (curr, prev) => {
+fs.watchFile(INPUT, { interval: 1000 }, (curr, prev) => {
     console.log('💨 开始编译 style.less');
     exec(`${LESSC} ${INPUT} ${OUTPUT} -x`, (err) => {
         if (err) {

@@ -19,15 +19,15 @@
 
 # 主要功能
 
--   自定义样式
--   单列多列排序
--   自定义排序
--   服务端排序
--   固定表头、固定列
+- 自定义样式
+- 单列多列排序
+- 自定义排序
+- 服务端排序
+- 固定表头、固定列
 
-![](https://github.com/qxtang/taro3-table/raw/master/preview.gif)
+![](https://gitee.com/qx9/image-host/raw/master/20220103123016.gif)
 
--   有许多不足与 bug 欢迎提 [issues](https://github.com/qxtang/taro3-table/issues)
+- 有许多不足与 bug 欢迎提 [issues](https://github.com/qxtang/taro3-table/issues)
 
 # 注意
 
@@ -85,8 +85,7 @@ export default () => {
 
 # 示例
 
--   [jsx 使用示例](https://github.com/qxtang/taro3-table/blob/master/src/pages/example/index.jsx)
--   [tsx 使用示例](https://github.com/qxtang/taro3-table/blob/master/src/pages/example-ts/index.tsx)
+- [使用示例](https://github.com/qxtang/taro3-table/blob/master/src/pages/example/index.jsx)
 
 # 参数说明
 

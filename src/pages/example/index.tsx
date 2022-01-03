@@ -1,34 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button } from '@tarojs/components';
 import Taro, { usePullDownRefresh } from '@tarojs/taro';
-import Table, { IColumns } from 'taro3-table';
+// import Table, { IColumns } from 'taro3-table';
+import Table, { IColumns } from '../../components/Table';
 
-// 假数据
-const getData = (): Promise<any[]> => {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(
-                new Array(20).fill(null).map((_, key) => {
-                    const random = n => Math.ceil(Math.random() * n);
-                    return {
-                        user_id: key + 1,
-                        username: `name_${random(1e15)}`,
-                        telephone: random(1e15),
-                        price: random(1e5),
-                        sex: (key + 1) % 2,
-                        address: `地址_${random(1e15)}`,
-                        orderInfo: {
-                            price: random(1e3),
-                            orderName: `orderName_${key + 1}`,
-                            createTime: `createTime_${key + 1}`,
-                        },
-                        createTime: new Date().toLocaleString(),
-                        status: Math.random() > 0.5,
-                    };
-                })
-            );
-        }, 1000);
+const sleep = (s = 1000) => new Promise(r => setTimeout(r, s));
+
+// 模拟请求假数据
+const queryData = async (opt?: { page: number, page_size: number }): Promise<any> => {
+    await sleep(1000);
+
+    const { page = 1, page_size = 5 } = opt || {};
+    const total_rows = 53;
+    const size = (() => {
+        const max_page = Math.ceil(total_rows / Number(page_size));
+        if (Number(page) < max_page) {
+            return page_size;
+        }
+        if (Number(page) === max_page) {
+            return total_rows % Number(page_size);
+        }
+        return 0;
+    })();
+
+    const list = new Array(Number(size)).fill(null).map((_, index) => {
+        const key = String(Math.ceil(Math.random() * 1e5));
+        return {
+            user_id: key,
+            username: `name_${page}_${index}`,
+            telephone: Math.ceil(Math.random() * 1e11),
+            price: (Math.random() * 1e3).toFixed(2),
+            sex: Number(Math.random() > 0.5),
+            address: `地址_${page}_${key}`,
+            orderInfo: {
+                price: (Math.random() * 1e3).toFixed(2),
+                orderName: `orderName_${key}`,
+                createTime: `createTime_${key}`,
+            },
+            createTime: new Date().toLocaleString(),
+            status: Math.random() > 0.5,
+        };
     });
+
+    return {
+        data: list,
+        pager: {
+            page,
+            page_size,
+            total_rows,
+        },
+    };
+
 };
 
 export default () => {
@@ -36,13 +58,17 @@ export default () => {
     const [dataSource, setDataSource] = useState<any[]>([]);
     const [columns, setColumns] = useState<IColumns[]>([
         {
-            title: '用户名',
-            dataIndex: 'username',
-            sort: true,
+            title: '用户编号',
+            width: 70,
+            dataIndex: 'user_id',
 
             // 左固定列示例
             fixed: 'left',
+        }, {
+            title: '用户名',
+            dataIndex: 'username',
 
+            // 自定义render
             render: t => {
                 return <Text style={{ color: 'red' }}>{t}</Text>;
             },
@@ -69,11 +95,11 @@ export default () => {
             dataIndex: 'telephone',
             sort: true,
             sorter: true,
-            onSort: async v => {
-                console.log('onSort -', v);
+            onSort: async sortOrder => {
+                console.log('onSort -', sortOrder);
 
                 setLoading(true);
-                const data = await getData();
+                const { data } = await queryData();
                 setDataSource(data);
                 setLoading(false);
             },
@@ -140,7 +166,7 @@ export default () => {
 
     const fetchData = async (): Promise<any[]> => {
         setLoading(true);
-        const data = await getData();
+        const { data } = await queryData();
         setDataSource(data);
         setLoading(false);
         return data;
@@ -153,9 +179,7 @@ export default () => {
                     size="mini"
                     onClick={(): void => {
                         const temp = [...dataSource];
-                        temp[3].price = 500;
-                        temp[4].price = 600;
-                        temp[5].price = 700;
+                        temp[0].username = `修改姓名_${Math.ceil(Math.random() * 100)}`;
                         setDataSource(temp);
                     }}
                 >
@@ -165,15 +189,11 @@ export default () => {
                     size="mini"
                     onClick={(): void => {
                         const temp = [...columns];
-                        temp[2].sortOrder = Math.random() > 0.5 ? 'descend' : 'ascend';
-                        temp[2].title = Math.ceil(Math.random() * 1000).toString();
+                        temp[0].title = `修改标题_${Math.ceil(Math.random() * 100)}`;
                         setColumns(temp);
                     }}
                 >
                     修改columns
-                </Button>
-                <Button size="mini" onClick={(): void => setColumns([])}>
-                    清空columns
                 </Button>
                 <Button size="mini" onClick={fetchData}>
                     刷新数据
