@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button } from '@tarojs/components';
 import Taro, { usePullDownRefresh } from '@tarojs/taro';
-// import Table, { IColumns } from 'taro3-table';
-import Table, { IColumns } from '../../components/Table';
+import Table, { IColumns } from 'taro3-table';
+// import Table, { IColumns } from '../../components/Table';
+// import Table, { IColumns } from '../../../build/Table';
 
 const sleep = (s = 1000) => new Promise(r => setTimeout(r, s));
 
