@@ -85,7 +85,7 @@ export default () => {
 
 # 示例
 
-- [使用示例](https://github.com/qxtang/taro3-table/blob/master/src/pages/example/index.jsx)
+- [使用示例](https://github.com/qxtang/taro3-table/blob/master/src/pages/example/index.tsx)
 
 # 参数说明
 
