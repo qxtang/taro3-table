@@ -36,11 +36,7 @@
 # 安装
 
 ```sh
-# npm 安装：
 npm install taro3-table
-
-# yarn 安装：
-yarn add taro3-table
 ```
 
 # 使用
