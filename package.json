@@ -3,6 +3,7 @@
   "version": "1.0.31",
   "author": "qxtang",
   "main": "build/Table/index.js",
+  "types": "build/Table/index.d.ts",
   "templateInfo": {
     "name": "default",
     "typescript": true,
@@ -18,10 +19,10 @@
     "url": "git@github.com:qxtang/taro3-table.git"
   },
   "scripts": {
-    "prepublishOnly": "npm version patch && yarn generate && git add . && git commit -m publish",
+    "prepublishOnly": "npm version patch && yarn build && git add . && git commit -m publish",
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
-    "generate": "bash ./generate.sh"
+    "build": "bash ./build.sh"
   },
   "browserslist": [
     "last 3 versions",

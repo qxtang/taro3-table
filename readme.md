@@ -27,8 +27,6 @@
 
 ![](https://gitee.com/qx9/image-host/raw/master/20220103123016.gif)
 
-- 有许多不足与 bug 欢迎提 [issues](https://github.com/qxtang/taro3-table/issues)
-
 # 注意
 
 只能在基于 Taro3.x 和 React 的微信小程序项目中使用。
@@ -46,36 +44,36 @@ import React from 'react';
 import Table from 'taro3-table';
 
 export default () => {
-    const dataSource = [
-        {
-            username: '小红',
-            telephone: '123',
-        },
-        {
-            username: '小明',
-            telephone: '456',
-        },
-    ];
+  const dataSource = [
+    {
+      username: '小红',
+      telephone: '123',
+    },
+    {
+      username: '小明',
+      telephone: '456',
+    },
+  ];
 
-    const columns = [
-        {
-            title: '用户名',
-            dataIndex: 'username',
-        },
+  const columns = [
+    {
+      title: '用户名',
+      dataIndex: 'username',
+    },
 
-        {
-            title: '手机号',
-            dataIndex: 'telephone',
-        },
-    ];
+    {
+      title: '手机号',
+      dataIndex: 'telephone',
+    },
+  ];
 
-    return (
-        <Table
-            columns={columns}
-            dataSource={dataSource}
-            // ...你的配置
-        />
-    );
+  return (
+    <Table
+      columns={columns}
+      dataSource={dataSource}
+      // ...你的配置
+    />
+  );
 };
 ```
 
