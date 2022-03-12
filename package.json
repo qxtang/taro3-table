@@ -1,6 +1,6 @@
 {
   "name": "taro3-table",
-  "version": "1.0.31",
+  "version": "1.1.0",
   "author": "qxtang",
   "main": "build/Table/index.js",
   "types": "build/Table/index.d.ts",
@@ -19,7 +19,6 @@
     "url": "git@github.com:qxtang/taro3-table.git"
   },
   "scripts": {
-    "prepublishOnly": "npm version patch && yarn build && git add . && git commit -m publish",
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
     "build": "bash ./build.sh"
@@ -53,10 +52,11 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "less": "^4.1.2",
+    "lessc": "^1.0.2",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
     "stylelint": "9.3.0",
-    "taro3-table": "latest",
     "typescript": "^3.7.0"
   }
 }
