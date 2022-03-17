@@ -1,9 +1,10 @@
 {
   "name": "taro3-table",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "qxtang",
   "main": "build/Table/index.js",
   "types": "build/Table/index.d.ts",
+  "description": "基于 Taro3、React 的微信小程序端多功能表格组件",
   "templateInfo": {
     "name": "default",
     "typescript": true,
@@ -19,6 +20,7 @@
     "url": "git@github.com:qxtang/taro3-table.git"
   },
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
     "build": "bash ./build.sh"

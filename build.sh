@@ -2,7 +2,7 @@
 
 echo "--- BUILD START ---"
 
-# delete
+# reset
 rm -rf build
 mkdir build
 
