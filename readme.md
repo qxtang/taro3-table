@@ -122,3 +122,7 @@ export default () => {
 | onSort         | 点击排序按钮钩子，常用于服务端排序                                              | (sortOrder: SortOrder) => void                                             | 否   |          |
 | fixed          | 固定列                                                                          | 'left' &#124; 'right'                                                      | 否   |          |
 | expandable     | 该列是否启用点击展开收起功能，默认 true                                         | boolean                                                                    | 否   | true     |
+
+# TODO
+
+- 支持虚拟列表
