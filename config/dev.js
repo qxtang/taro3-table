@@ -24,5 +24,6 @@ module.exports = {
         NODE_ENV: '"development"'
     },
     defineConstants: {},
-    mini: {}
+    mini: {},
+    h5: {}
 };

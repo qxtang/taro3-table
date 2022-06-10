@@ -36,7 +36,9 @@ const config = {
                 }
             }
         }
-    }
+    },
+    h5: {
+      },
 };
 
 module.exports = function (merge) {

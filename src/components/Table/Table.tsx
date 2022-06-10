@@ -144,6 +144,8 @@ const Table = (props: Props): JSX.Element | null => {
         colClassName = '',
         onChange = (): void => {
         },
+        onRowClick = (): void => {
+        },
         multipleSort = false,
         scroll = {}
     } = props;
@@ -251,6 +253,7 @@ const Table = (props: Props): JSX.Element | null => {
                     [rowClassName]: true,
                 })}
                 style={rowStyle}
+                onClick={()=> onRowClick(dataSourceItem)}
             >
                 {
                     columns.map((columnItem: IColumns, colIndex: number): JSX.Element => {
