@@ -253,7 +253,7 @@ const Table = (props: Props): JSX.Element | null => {
                     [rowClassName]: true,
                 })}
                 style={rowStyle}
-                onClick={()=> onRowClick(dataSourceItem)}
+                onclick={()=> onRowClick(dataSourceItem)} // 这是小写才生效
             >
                 {
                     columns.map((columnItem: IColumns, colIndex: number): JSX.Element => {
