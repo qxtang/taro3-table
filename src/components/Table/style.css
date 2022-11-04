@@ -172,7 +172,7 @@
 }
 .taro3table .taro3table_table_bordered .taro3table_head > .taro3table_title {
   height: 100%;
-  border-right: 1px solid #eee;
+  border-right: 1PX solid #eee;
 }
 .taro3table .taro3table_table_bordered .taro3table_head > .taro3table_title:last-child {
   border-right: none;
@@ -182,4 +182,10 @@
 }
 .taro3table .taro3table_table_bordered .taro3table_body > .taro3table_row:last-child {
   border-bottom: none;
+}
+.taro3table .taro3table_table_bordered .taro3table_body > .taro3table_row > .taro3table_col {
+  border-right: 1PX solid #eee;
+}
+.taro3table .taro3table_table_bordered .taro3table_body > .taro3table_row > .taro3table_col:last-child {
+  border-right: none;
 }

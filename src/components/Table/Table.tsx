@@ -130,6 +130,7 @@ const Empty = () => {
 
 const Table = (props: Props): JSX.Element | null => {
     const {
+        bordered = false,
         columns: pColumns = [],
         dataSource: pDataSource = [],
         rowKey = '',
@@ -315,7 +316,7 @@ const Table = (props: Props): JSX.Element | null => {
         >
             {loading && (<Loading/>)}
             <ScrollView
-                className="taro3table_table"
+                className={ bordered ? "taro3table_table taro3table_table_bordered" : "taro3table_table"}
                 scroll-x={(dataSource.length !== 0) && (scroll.x)}
                 scroll-y={scroll.y}
                 style={{
