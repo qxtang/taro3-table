@@ -2,7 +2,7 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import Taro from '@tarojs/taro';
 import classnames from 'classnames';
-import useDeepCompareEffect from 'use-deep-compare-effect';
+// import useDeepCompareEffect from 'use-deep-compare-effect';
 
 // components
 import { ScrollView, Text, View } from '@tarojs/components';
@@ -159,9 +159,9 @@ const Table = (props: Props): JSX.Element | null => {
         onChange(dataSource);
     }, [dataSource]);
 
-    useDeepCompareEffect(() => {
-        setColumns(pColumns);
-    }, [pColumns]);
+    // useDeepCompareEffect(() => {
+    //     setColumns(pColumns);
+    // }, [pColumns]);
 
     // 排序
     useEffect(() => {
