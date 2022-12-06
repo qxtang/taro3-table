@@ -25,5 +25,10 @@ module.exports = {
     },
     defineConstants: {},
     mini: {},
-    h5: {}
+    h5: {
+        output: {
+            filename: 'js/[name].[hash:8].js',
+            chunkFilename: 'js/[name].[chunkhash:8].js',
+        },
+    }
 };
