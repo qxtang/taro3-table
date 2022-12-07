@@ -124,7 +124,9 @@ const JC_TA_MAP = {
 
 const getSize = (size: string | number): string => {
   if (typeof size === "number") {
-    return Taro.pxTransform((size as number) * 2);
+    // 后面第二个参数不给，h5会报错
+    // （ Taro.pxTransform 貌似没用）
+    return Taro.pxTransform((size as number) * 2, 750);
   } else {
     return String(size);
   }
@@ -263,6 +265,7 @@ const Table = (props: Props): JSX.Element | null => {
     onChange(dataSource);
   }, [dataSource]);
 
+  // 暂时不需要多级列表
   // useDeepCompareEffect(() => {
   //     setColumns(pColumns);
   // }, [pColumns]);
