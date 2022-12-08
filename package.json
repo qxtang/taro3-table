@@ -44,6 +44,7 @@
     "@tarojs/components": "3.0.22",
     "@tarojs/mini-runner": "3.0.22",
     "@tarojs/plugin-framework-react": "^3.5.8",
+    "@tarojs/plugin-platform-weapp": "^3.5.8",
     "@tarojs/react": "3.0.22",
     "@tarojs/runtime": "3.0.22",
     "@tarojs/taro": "3.0.22",
