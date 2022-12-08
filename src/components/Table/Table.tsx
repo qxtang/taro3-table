@@ -20,6 +20,67 @@ import {
   SortOrder,
 } from "./types";
 
+const Title = (props: {
+  key: any;
+  column: IColumns;
+  index: number;
+  handleClickTitle: (item: IColumns, index: number) => void;
+  titleClassName: string;
+  titleStyle: Record<string | number, any>;
+  columns: IColumns[];
+}): JSX.Element => {
+  const {
+    column,
+    index,
+    handleClickTitle,
+    titleClassName,
+    titleStyle,
+    columns,
+  } = props;
+
+  return (
+    <View
+      onClick={handleClickTitle.bind(this, column, index)}
+      className={classnames({
+        taro3table_title: true,
+        taro3table_fixed: column.fixed,
+        [column.titleClassName || ""]: true,
+        [titleClassName]: true,
+      })}
+      style={{
+        [column.fixed as string]:
+          column.fixed &&
+          calculateFixedDistance({ fixedType: column.fixed, index, columns }),
+        width: getSize(column.width || DEFAULT_COL_WIDTH),
+        ...column.titleStyle,
+        ...titleStyle,
+        justifyContent: column.align && JC_TA_MAP[column.align],
+      }}
+      key={column.key || column.dataIndex}
+    >
+      <Text>{column.title}</Text>
+      {column.sort && (
+        <View className="taro3table_sortBtn">
+          <View
+            className={classnames({
+              taro3table_btn: true,
+              taro3table_ascend: true,
+              taro3table_active: column.sortOrder === "ascend",
+            })}
+          />
+          <View
+            className={classnames({
+              taro3table_btn: true,
+              taro3table_descend: true,
+              taro3table_active: column.sortOrder === "descend",
+            })}
+          />
+        </View>
+      )}
+    </View>
+  );
+};
+
 const Row = (props: {
   key: any;
   dataSourceItem: AnyOpt;
@@ -35,7 +96,7 @@ const Row = (props: {
   DEFAULT_COL_WIDTH: number;
   calculateFixedDistance: (val: any) => string;
   colStyle: any;
-  onRowClick: (val:any)=>void
+  onRowClick: (val: any) => void;
 }): JSX.Element => {
   const {
     dataSourceItem,
@@ -51,7 +112,7 @@ const Row = (props: {
     DEFAULT_COL_WIDTH,
     calculateFixedDistance,
     colStyle,
-    onRowClick
+    onRowClick,
   } = props;
 
   return (
@@ -301,56 +362,6 @@ const Table = (props: Props): JSX.Element | null => {
     [columns, loading]
   );
 
-  const Title = (props: {
-    key: any;
-    column: IColumns;
-    index: number;
-  }): JSX.Element => {
-    const { column, index } = props;
-
-    return (
-      <View
-        onClick={handleClickTitle.bind(this, column, index)}
-        className={classnames({
-          taro3table_title: true,
-          taro3table_fixed: column.fixed,
-          [column.titleClassName || ""]: true,
-          [titleClassName]: true,
-        })}
-        style={{
-          [column.fixed as string]:
-            column.fixed &&
-            calculateFixedDistance({ fixedType: column.fixed, index, columns }),
-          width: getSize(column.width || DEFAULT_COL_WIDTH),
-          ...column.titleStyle,
-          ...titleStyle,
-          justifyContent: column.align && JC_TA_MAP[column.align],
-        }}
-        key={column.key || column.dataIndex}
-      >
-        <Text>{column.title}</Text>
-        {column.sort && (
-          <View className="taro3table_sortBtn">
-            <View
-              className={classnames({
-                taro3table_btn: true,
-                taro3table_ascend: true,
-                taro3table_active: column.sortOrder === "ascend",
-              })}
-            />
-            <View
-              className={classnames({
-                taro3table_btn: true,
-                taro3table_descend: true,
-                taro3table_active: column.sortOrder === "descend",
-              })}
-            />
-          </View>
-        )}
-      </View>
-    );
-  };
-
   const wrapWidth = useMemo((): number => {
     return columns.reduce(function (prev, cur) {
       return prev + (cur.width || DEFAULT_COL_WIDTH);
@@ -394,6 +405,10 @@ const Table = (props: Props): JSX.Element | null => {
                   key={item.key || item.dataIndex}
                   column={item}
                   index={index}
+                  handleClickTitle={handleClickTitle}
+                  titleClassName={titleClassName}
+                  titleStyle={titleStyle}
+                  columns={columns}
                 />
               );
             })
