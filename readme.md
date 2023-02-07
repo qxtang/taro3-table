@@ -98,6 +98,7 @@ export default () => {
 | onChange       | 表格数据变化钩子                           | (dataSource: any[]) => void                                                          | 否   |        |
 | multipleSort   | 是否开启多列排序                           | boolean                                                                              | 否   | false  |
 | scroll         | 表格是否可滚动，也可以指定滚动区域的宽、高 | { x?: number &#124; string &#124; boolean, y?: number &#124; string &#124; boolean } | 否   |        |
+| onRowClick     | 行点击事件                               | (record) => void
 
 ## column
 

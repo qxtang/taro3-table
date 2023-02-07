@@ -9,6 +9,7 @@
   }
 }
 
+@borderColor: #eee;
 .taro3table {
   box-sizing: border-box;
   position: relative;
@@ -149,7 +150,6 @@
         width: max-content;
         min-width: 100%;
         background-color: #ffffff;
-        border-top: unit(1, rpx) solid rgba(67, 120, 190, 0.1);
 
         &:first-child {
           border-top: none;
@@ -192,6 +192,33 @@
             position: sticky;
             top: 0;
             z-index: 92;
+          }
+        }
+      }
+    }
+  }
+  .taro3table_table_bordered {
+    border: 1PX solid @borderColor;
+    .taro3table_head{
+      border-bottom: 1PX solid @borderColor;
+      >.taro3table_title{
+        height: 100%;
+        border-right: 1PX solid @borderColor;
+      }
+      >.taro3table_title:last-child{
+        border-right: none;
+      }
+    }
+    .taro3table_body{
+      > .taro3table_row {
+        border-bottom: 1PX solid @borderColor;
+        &:last-child {
+          border-bottom: none;
+        }
+        > .taro3table_col {
+          border-right: 1PX solid @borderColor;
+          &:last-child {
+            border-right: none;
           }
         }
       }

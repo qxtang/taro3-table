@@ -23,6 +23,7 @@
     "prepublishOnly": "npm run build",
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
+    "dev:h5": "taro build --type h5 --watch",
     "build": "bash ./build.sh"
   },
   "browserslist": [
@@ -38,8 +39,12 @@
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.8.0",
     "@babel/runtime": "^7.7.7",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@tarojs/cli": "^3.5.8",
     "@tarojs/components": "3.0.22",
     "@tarojs/mini-runner": "3.0.22",
+    "@tarojs/plugin-framework-react": "^3.5.8",
+    "@tarojs/plugin-platform-weapp": "^3.5.8",
     "@tarojs/react": "3.0.22",
     "@tarojs/runtime": "3.0.22",
     "@tarojs/taro": "3.0.22",
@@ -58,6 +63,7 @@
     "lessc": "^1.0.2",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
+    "react-refresh": "^0.14.0",
     "stylelint": "9.3.0",
     "typescript": "^3.7.0"
   }
