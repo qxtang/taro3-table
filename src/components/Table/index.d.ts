@@ -29,6 +29,7 @@ export interface IColumns {
 }
 
 export interface Props extends PropsWithChildren<any> {
+    bordered?: boolean; // 是否加边框
     columns: IColumns[]; // 表格列的配置描述
     dataSource: AnyOpt[]; // 数据源
     rowKey: string; // 表格行 key 的取值

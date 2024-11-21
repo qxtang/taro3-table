@@ -36,7 +36,33 @@ const config = {
                 }
             }
         }
-    }
+    },
+    h5: {
+        esnextModules: ['taro-ui'],
+        publicPath: '/',
+        miniCssExtractPluginOption: {
+          filename: 'css/[name].[hash].css',
+          chunkFilename: 'css/[name].[chunkhash].css',
+        },
+        postcss: {
+          autoprefixer: {
+            enable: true,
+            config: {},
+          },
+          cssModules: {
+            enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+            config: {
+              namingPattern: 'module', // 转换模式，取值为 global/module
+              generateScopedName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+        },
+        lessLoaderOption: {
+          lessOptions: {
+            javascriptEnabled: true, //是否启用less （已经弃用）
+          },
+        },
+      },
 };
 
 module.exports = function (merge) {
